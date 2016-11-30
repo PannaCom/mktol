@@ -1,0 +1,75 @@
+﻿
+@{
+    
+    Layout = "~/Views/Shared/_LayoutContent.cshtml";
+}
+<section id="blog" class="container" style="margin-top:15px;">
+    <div class="blog">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="blog-item">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-10 blog-content">
+                            <div style="block_timer left txt_666">@Html.Raw(@ViewBag.datetime)</div>
+                            <h2>@ViewBag.title</h2>
+                            <h3>@ViewBag.des</h3>
+                            @Html.Raw(@ViewBag.content)
+                            @*<div class="post-tags">
+                                <strong>Tag:</strong> <a href="#">Cool</a> / <a href="#">Creative</a> / <a href="#">Dubttstep</a>
+                            </div>*@
+                        </div>
+                    </div>
+                </div><!--/.blog-item-->
+            </div><!--/.col-md-8-->
+            <aside class="col-md-4">
+                <div class="widget search">
+                    <form role="form">
+                        <input type="text" class="form-control search_box" autocomplete="off" placeholder="Gõ tìm kiếm">
+                    </form>
+                </div><!--/.search-->
+                @*<div class="widget categories">
+                    <h3>Danh mục</h3>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <ul class="blog_category">
+                                <li><a href="#">Computers <span class="badge">04</span></a></li>
+                                <li><a href="#">Smartphone <span class="badge">10</span></a></li>
+                                <li><a href="#">Gedgets <span class="badge">06</span></a></li>
+                                <li><a href="#">Technology <span class="badge">25</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>*@<!--/.categories-->
+                <div class="widget categories">
+                    <h3>Tin Khác</h3>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            @if (ViewBag.newsother != null) {
+                                foreach (var item in ViewBag.newsother) {
+                                    var link = "/" + MarketingOnline.Config.unicodeToNoMark(item.title) + "-" + item.id;
+                                    <div class="single_comments" style="width: 100%; float: left;">
+                                        <a href="@link">
+                                            <img src="@item.image" style="width:64px;height:64px;">
+                                            <p>@item.title</p>
+                                        </a>
+                                        <div class="entry-meta small muted">
+                                            <span>on @item.datetime</span>
+                                        </div>
+                                    </div>
+                                }
+                            }
+                        </div>
+                    </div>
+                </div><!--/.recent comments-->
+
+                @*<div class="widget tags">
+                    <h3>Từ khóa</h3>
+                    <ul class="tag-cloud">
+                        <li><a class="btn btn-xs btn-primary" href="#"></a></li>
+                    </ul>
+                </div>*@<!--/.tags-->
+            </aside>
+        </div><!--/.row-->
+    </div><!--/.blog-->
+</section><!--/#blog-->
+
