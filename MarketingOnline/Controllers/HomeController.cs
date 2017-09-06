@@ -59,5 +59,10 @@ namespace MarketingOnline.Controllers
             ViewBag.Message = "Your application description page.";
             return View();
         }
+        public ActionResult ThietKeWeb()
+        {
+            ViewBag.Message = "Your application description page.";
+            return View();
+        }
     }
 }

@@ -133,18 +133,18 @@
         </div><!--/.row-->
     </div><!--/.container-->
 </section><!--/#services-->
-<section id="content">
+<section id="contentindex">
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-12 wow fadeInDown">
                 <div class="tab-content">
                     @foreach (var item in ViewBag.news)
                     {
-                        var link = "/"+ MarketingOnline.Config.unicodeToNoMark(@item.title) + "-" + @item.id;
+                        var link = "/" + MarketingOnline.Config.unicodeToNoMark(@item.title) + "-" + @item.id;
                         <div class="col-xs-6">
                             <div class=" media">
                                 <div class="pull-left">
-                                    <a href="@link" ><img class="img-responsive" src="@item.image"></a>
+                                    <a href="@link"><img class="img-responsive" src="@item.image"></a>
                                 </div>
                                 <div class="media-body">
                                     <a href="@link"><h2>@item.title</h2></a>
