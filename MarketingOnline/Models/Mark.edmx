@@ -10,13 +10,15 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="title" Type="nvarchar" MaxLength="250" />
-          <Property Name="image" Type="nvarchar" MaxLength="150" />
+          <Property Name="title" Type="nvarchar" MaxLength="501" />
+          <Property Name="image" Type="nvarchar" MaxLength="501" />
           <Property Name="des" Type="ntext" />
           <Property Name="fullcontent" Type="ntext" />
           <Property Name="datetime" Type="datetime" />
           <Property Name="keywords" Type="nvarchar" MaxLength="256" />
           <Property Name="cat" Type="nvarchar" MaxLength="150" />
+          <Property Name="link" Type="nvarchar" MaxLength="501" />
+          <Property Name="date_id" Type="int" />
         </EntityType>
         <EntityType Name="users">
           <Key>
@@ -34,22 +36,9 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="marketingolModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="news">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="title" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="image" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="des" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="fullcontent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="datetime" Type="DateTime" Precision="3" />
-          <Property Name="keywords" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="cat" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-        </EntityType>
         <EntityContainer Name="marketingolEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="news" EntityType="Self.news" />
           <EntitySet Name="users" EntityType="marketingolModel.user" />
+          <EntitySet Name="news" EntityType="marketingolModel.news" />
         </EntityContainer>
         <EntityType Name="user">
           <Key>
@@ -59,31 +48,48 @@
           <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="pass" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="news">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="501" FixedLength="false" Unicode="true" />
+          <Property Name="image" Type="String" MaxLength="501" FixedLength="false" Unicode="true" />
+          <Property Name="des" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="fullcontent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="datetime" Type="DateTime" Precision="3" />
+          <Property Name="keywords" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="cat" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="link" Type="String" MaxLength="501" FixedLength="false" Unicode="true" />
+          <Property Name="date_id" Type="Int32" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="marketingolModelStoreContainer" CdmEntityContainer="marketingolEntities">
-          <EntitySetMapping Name="news">
-            <EntityTypeMapping TypeName="marketingolModel.news">
-              <MappingFragment StoreEntitySet="news">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="title" ColumnName="title" />
-                <ScalarProperty Name="image" ColumnName="image" />
-                <ScalarProperty Name="des" ColumnName="des" />
-                <ScalarProperty Name="fullcontent" ColumnName="fullcontent" />
-                <ScalarProperty Name="datetime" ColumnName="datetime" />
-                <ScalarProperty Name="keywords" ColumnName="keywords" />
-                <ScalarProperty Name="cat" ColumnName="cat" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="users">
             <EntityTypeMapping TypeName="marketingolModel.user">
               <MappingFragment StoreEntitySet="users">
                 <ScalarProperty Name="pass" ColumnName="pass" />
                 <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="news">
+            <EntityTypeMapping TypeName="marketingolModel.news">
+              <MappingFragment StoreEntitySet="news">
+                <ScalarProperty Name="date_id" ColumnName="date_id" />
+                <ScalarProperty Name="link" ColumnName="link" />
+                <ScalarProperty Name="cat" ColumnName="cat" />
+                <ScalarProperty Name="keywords" ColumnName="keywords" />
+                <ScalarProperty Name="datetime" ColumnName="datetime" />
+                <ScalarProperty Name="fullcontent" ColumnName="fullcontent" />
+                <ScalarProperty Name="des" ColumnName="des" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="title" ColumnName="title" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

@@ -22,5 +22,7 @@ namespace MarketingOnline.Models
         public Nullable<System.DateTime> datetime { get; set; }
         public string keywords { get; set; }
         public string cat { get; set; }
+        public string link { get; set; }
+        public Nullable<int> date_id { get; set; }
     }
 }

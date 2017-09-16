@@ -25,7 +25,7 @@ namespace MarketingOnline.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<news> news { get; set; }
         public virtual DbSet<user> users { get; set; }
+        public virtual DbSet<news> news { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -10,11 +11,47 @@ namespace MarketingOnline
 {
     public class Config
     {
+        public static bool isCrawl = false;
         public static int PageSize = 5;
         public static string NewsImagePath = "/Images/News";
         public static int imgWidthNews = 205;
         public static int imgHeightNews = 190;
         public static string domain = "http://marketingol.net";
+        public static string convertToDateTimeId(string d)
+        {
+            DateTime d1;
+            try
+            {
+                d1 = DateTime.Parse(d);//ToUniversalTime();
+                return d1.Year.ToString() + d1.Month.ToString("00") + d1.Day.ToString("00");
+            }
+            catch (Exception ex)
+            {
+                //d1 = DateTime.Now;
+                //return d1.Year.ToString() + d1.Month.ToString("00") + d1.Day.ToString("00");
+                return "0";
+            }
+            //d1 = DateTime.Now;
+            //return d1.Year.ToString() + d1.Month.ToString("00") + d1.Day.ToString("00");
+        }
+        public static int datetimeid()
+        {
+            DateTime d1;
+            try
+            {
+
+                d1 = DateTime.Now;//.ToUniversalTime();
+                string rs = d1.Year.ToString() + d1.Month.ToString("00") + d1.Day.ToString("00");
+                return int.Parse(rs);
+
+            }
+            catch (Exception ex)
+            {
+                d1 = DateTime.Now;//.ToUniversalTime();
+                string rs = d1.Year.ToString() + d1.Month.ToString("00") + d1.Day.ToString("00");
+                return int.Parse(rs);
+            }
+        }
         public static void setCookie(string field, string value)
         {
             HttpCookie MyCookie = new HttpCookie(field);
@@ -91,6 +128,56 @@ namespace MarketingOnline
         {
             input = input.Replace("-", "").Replace(":", "").Replace(",", "").Replace("_", "").Replace("'", "").Replace("\"", "").Replace(";", "").Replace("”", "").Replace(".", "").Replace("%", "");
             return input;
+        }
+        public static string getDiffTimeMinuteFromTwoDate(DateTime date1, DateTime date2)
+        {
+            try
+            {
+                DateTime d1 = date1;
+                DateTime d2 = date2;
+                TimeSpan TS = new System.TimeSpan(d2.Ticks - d1.Ticks);
+                int totalHours = (int)Math.Abs(TS.TotalSeconds);
+                if (totalHours < 0)
+                {
+                    return "1 phút trước";
+                    //d2 = d2.ToLocalTime();
+                    //return d2.Day + "/" + d2.Month + "/" + d2.Year;
+                }
+                else
+                {
+                    if (totalHours >= 3600)
+                    {
+                        int days = totalHours / 3600;
+                        return days + " giờ trước";
+                    }
+                    else return totalHours.ToString() + " giây trước";
+                }
+            }
+            catch (Exception ex)
+            {
+                return "";
+            }
+        }
+        public static void logFile(string val, string filename)
+        {
+            string path = "D:\\Marketingol.net\\";
+            StreamWriter sw = new StreamWriter(path + filename);
+            sw.WriteLine(val);
+            sw.Close();
+        }
+        public static DateTime? toDateTime(string d)
+        {
+            //if (d.Contains("GMT")) d = d.Replace("GMT", "");
+            DateTime? d1;
+            try
+            {
+                d1 = DateTime.Parse(d);
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+            return d1;
         }
     }
 }
