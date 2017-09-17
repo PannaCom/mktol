@@ -1,0 +1,81 @@
+﻿@model PagedList.IPagedList<MarketingOnline.Models.company>
+@using PagedList.Mvc;
+@{
+    
+    Layout = "~/Views/Shared/_LayoutContent.cshtml";
+    string keyword = "";
+}
+<section id="blog" class="container">
+    <div class="blog">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="blog-item">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 wow fadeInDown">
+                            <div class="tab-content">
+                                @foreach (var item in Model)
+                                {
+                                    var link = "/cong-ty/" + item.tax+"-"+Config.unicodeToNoMark(item.name) + "-" + item.id;
+                                    <text>
+                                        <div class="col-xs-12" style="margin-bottom:10x;margin-top:10px;border-bottom:1px solid #808080;">
+                                            <div class=" media">
+                                                <div class="col-md-12">
+                                                    <a href="@link"><h2>@item.name</h2></a>
+                                                    @if (item.owner!=null && item.owner!=""){
+                                                        <text><p><b>Chủ sở hữu:</b> @item.owner</p></text>
+                                                    }
+                                                    <p>Mã số thuế: @item.tax</p>
+                                                    <p>Ngày thành lập: @String.Format("{0:dd/MM/yyyy}", @item.date_startup)</p>
+                                                    <p>Tỉnh thành phố: @item.province</p>
+                                                    <p>Địa chỉ: @item.address</p>
+                                                    <p>Ngành nghề kinh doanh: <i>@item.business</i></p>
+                                                </div>                                               
+                                            </div>
+                                        </div>
+                                    </text>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div><!--/.blog-item-->
+                <ul class="pagination pagination-lg">
+                    <li><a href="#">Trang:</a></li>
+                    @for (int i = 1; i <= 5; i++)
+                    {
+                        if (i != ViewBag.page)
+                        {
+                            <text>
+                                <li><a href="/cong-ty/@ViewBag.pro/@ViewBag.dis/@ViewBag.str/@i">@i</a></li></text>
+                        }
+                        else
+                        {
+                            <text>
+                                <li><a href="/cong-ty/@ViewBag.pro/@ViewBag.dis/@ViewBag.str/@i" class="active" style="background-color: #c52d2f;border-color: #c52d2f;color:#fff;">@i</a></li></text>
+                        }
+                    }
+
+                </ul><!--/.pagination-->
+            </div><!--/.col-md-8-->
+            <aside class="col-md-4">
+                <div class="widget search">
+                    <form role="form">
+                        <input type="text" class="form-control search_box" autocomplete="off" placeholder="Gõ tìm kiếm">
+                    </form>
+                </div><!--/.search-->
+                <div class="widget categories">
+                        <h3>Chọn Địa Điểm</h3>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <ul class="blog_category">
+                                    <li><a href="#">Computers <span class="badge">04</span></a></li>
+                                    <li><a href="#">Smartphone <span class="badge">10</span></a></li>
+                                    <li><a href="#">Gedgets <span class="badge">06</span></a></li>
+                                    <li><a href="#">Technology <span class="badge">25</span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                 </div>
+            </aside>
+        </div><!--/.row-->
+    </div><!--/.blog-->
+</section><!--/#blog-->

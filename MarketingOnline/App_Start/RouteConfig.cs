@@ -13,6 +13,11 @@ namespace MarketingOnline
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             routes.MapRoute(
+                "company",
+                "cong-ty/{pro}/{dis}/{str}/{page}",
+                new { controller = "company", action = "index", pro = UrlParameter.Optional, dis = UrlParameter.Optional, str = UrlParameter.Optional, page = UrlParameter.Optional }
+            );
+            routes.MapRoute(
                 "view detail news",
                 "{name}-{id}",
                 new { controller = "news", action = "GetDetails", name = UrlParameter.Optional, id = UrlParameter.Optional }
