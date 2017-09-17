@@ -12,8 +12,9 @@
                         <div class="col-xs-12 col-sm-10 blog-content">
                             <div style="block_timer left txt_666">@Html.Raw(@ViewBag.datetime)</div>
                             <h2>@ViewBag.title</h2>
-                            <h3>@ViewBag.des</h3>
-                            @Html.Raw(@ViewBag.content)
+                            @*<h3>@ViewBag.des</h3>*@
+                            <p>@Html.Raw(HttpUtility.HtmlDecode(Model.fullcontent))</p>
+                            <p>Nguồn bài báo: <a href="@Model.link" rel="nofollow">@Model.link</a></p>
                             @*<div class="post-tags">
                                 <strong>Tag:</strong> <a href="#">Cool</a> / <a href="#">Creative</a> / <a href="#">Dubttstep</a>
                             </div>*@

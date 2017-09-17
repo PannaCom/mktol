@@ -5,6 +5,34 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="marketingolModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="company">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="owner" Type="nvarchar" MaxLength="501" />
+          <Property Name="name" Type="nvarchar" MaxLength="501" />
+          <Property Name="name_en" Type="nvarchar" MaxLength="501" />
+          <Property Name="des" Type="ntext" />
+          <Property Name="province" Type="nvarchar" MaxLength="150" />
+          <Property Name="district" Type="nvarchar" MaxLength="501" />
+          <Property Name="street" Type="nvarchar" MaxLength="501" />
+          <Property Name="business" Type="nvarchar" MaxLength="1501" />
+          <Property Name="phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="tax" Type="nvarchar" MaxLength="50" />
+          <Property Name="address" Type="nvarchar" MaxLength="501" />
+          <Property Name="address_owner" Type="nvarchar" MaxLength="501" />
+          <Property Name="date_startup" Type="datetime" />
+          <Property Name="tax_office" Type="nvarchar" MaxLength="501" />
+          <Property Name="employees" Type="int" />
+        </EntityType>
+        <EntityType Name="log">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="page" Type="int" />
+        </EntityType>
         <EntityType Name="news">
           <Key>
             <PropertyRef Name="id" />
@@ -20,6 +48,13 @@
           <Property Name="link" Type="nvarchar" MaxLength="501" />
           <Property Name="date_id" Type="int" />
         </EntityType>
+        <EntityType Name="rss">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="rss" Type="nvarchar" MaxLength="501" />
+        </EntityType>
         <EntityType Name="users">
           <Key>
             <PropertyRef Name="id" />
@@ -29,7 +64,10 @@
           <Property Name="pass" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityContainer Name="marketingolModelStoreContainer">
+          <EntitySet Name="company" EntityType="Self.company" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="log" EntityType="Self.log" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="news" EntityType="Self.news" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="rss" EntityType="Self.rss" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -39,6 +77,9 @@
         <EntityContainer Name="marketingolEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="users" EntityType="marketingolModel.user" />
           <EntitySet Name="news" EntityType="marketingolModel.news" />
+          <EntitySet Name="companies" EntityType="marketingolModel.company" />
+          <EntitySet Name="rsses" EntityType="marketingolModel.rss" />
+          <EntitySet Name="logs" EntityType="marketingolModel.log" />
         </EntityContainer>
         <EntityType Name="user">
           <Key>
@@ -62,6 +103,41 @@
           <Property Name="cat" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="link" Type="String" MaxLength="501" FixedLength="false" Unicode="true" />
           <Property Name="date_id" Type="Int32" />
+        </EntityType>
+        <EntityType Name="company">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="owner" Type="String" MaxLength="501" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="501" FixedLength="false" Unicode="true" />
+          <Property Name="name_en" Type="String" MaxLength="501" FixedLength="false" Unicode="true" />
+          <Property Name="des" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="province" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="district" Type="String" MaxLength="501" FixedLength="false" Unicode="true" />
+          <Property Name="street" Type="String" MaxLength="501" FixedLength="false" Unicode="true" />
+          <Property Name="business" Type="String" MaxLength="1501" FixedLength="false" Unicode="true" />
+          <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="tax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="address" Type="String" MaxLength="501" FixedLength="false" Unicode="true" />
+          <Property Name="address_owner" Type="String" MaxLength="501" FixedLength="false" Unicode="true" />
+          <Property Name="date_startup" Type="DateTime" Precision="3" />
+          <Property Name="tax_office" Type="String" MaxLength="501" FixedLength="false" Unicode="true" />
+          <Property Name="employees" Type="Int32" />
+        </EntityType>
+        <EntityType Name="rss">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="rss1" Type="String" MaxLength="501" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="log">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="page" Type="Int32" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -90,6 +166,44 @@
                 <ScalarProperty Name="des" ColumnName="des" />
                 <ScalarProperty Name="image" ColumnName="image" />
                 <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="companies">
+            <EntityTypeMapping TypeName="marketingolModel.company">
+              <MappingFragment StoreEntitySet="company">
+                <ScalarProperty Name="employees" ColumnName="employees" />
+                <ScalarProperty Name="tax_office" ColumnName="tax_office" />
+                <ScalarProperty Name="date_startup" ColumnName="date_startup" />
+                <ScalarProperty Name="address_owner" ColumnName="address_owner" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="tax" ColumnName="tax" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="business" ColumnName="business" />
+                <ScalarProperty Name="street" ColumnName="street" />
+                <ScalarProperty Name="district" ColumnName="district" />
+                <ScalarProperty Name="province" ColumnName="province" />
+                <ScalarProperty Name="des" ColumnName="des" />
+                <ScalarProperty Name="name_en" ColumnName="name_en" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="owner" ColumnName="owner" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rsses">
+            <EntityTypeMapping TypeName="marketingolModel.rss">
+              <MappingFragment StoreEntitySet="rss">
+                <ScalarProperty Name="rss1" ColumnName="rss" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="logs">
+            <EntityTypeMapping TypeName="marketingolModel.log">
+              <MappingFragment StoreEntitySet="log">
+                <ScalarProperty Name="page" ColumnName="page" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

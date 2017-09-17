@@ -11,6 +11,7 @@ using PagedList;
 using ImageProcessor.Processors;
 using ImageProcessor.Imaging;
 using System.Drawing;
+using System.Text.RegularExpressions;
 namespace MarketingOnline.Controllers
 {
     public class newsController : Controller
@@ -52,7 +53,14 @@ namespace MarketingOnline.Controllers
             //ViewBag.menuleft = Config.getProjectMenu();
             ViewBag.datetime = "<span itemprop=\"datePublished\" style=\"color:green;\">" + news.datetime.Value + "</span>";
             ViewBag.content = news.fullcontent;
-            ViewBag.des = news.des;
+            if (news.des != null)
+            {
+                ViewBag.des = Regex.Replace(news.des, "<.*?>", string.Empty);
+            }
+            else
+            {
+                ViewBag.des = news.title;
+            }
             ViewBag.image = Config.domain + news.image;
             ViewBag.url = Config.domain + "/" + Config.unicodeToNoMark(news.title) + "-" + id;
             ViewBag.title = news.title;

@@ -27,5 +27,8 @@ namespace MarketingOnline.Models
     
         public virtual DbSet<user> users { get; set; }
         public virtual DbSet<news> news { get; set; }
+        public virtual DbSet<company> companies { get; set; }
+        public virtual DbSet<rss> rsses { get; set; }
+        public virtual DbSet<log> logs { get; set; }
     }
 }

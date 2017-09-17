@@ -12,6 +12,7 @@ namespace MarketingOnline
     public class Config
     {
         public static bool isCrawl = false;
+        public static bool isCrawlCompany = false;
         public static int PageSize = 5;
         public static string NewsImagePath = "/Images/News";
         public static int imgWidthNews = 205;
