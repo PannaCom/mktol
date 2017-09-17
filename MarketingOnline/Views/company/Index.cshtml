@@ -45,12 +45,12 @@
                         if (i != ViewBag.page)
                         {
                             <text>
-                                <li><a href="/cong-ty/@ViewBag.pro/@ViewBag.dis/@ViewBag.str/@i">@i</a></li></text>
+                                <li><a href="/cong-ty/@ViewBag.pro/@ViewBag.dis/@ViewBag.str/@ViewBag.keyword/@i">@i</a></li></text>
                         }
                         else
                         {
                             <text>
-                                <li><a href="/cong-ty/@ViewBag.pro/@ViewBag.dis/@ViewBag.str/@i" class="active" style="background-color: #c52d2f;border-color: #c52d2f;color:#fff;">@i</a></li></text>
+                                <li><a href="/cong-ty/@ViewBag.pro/@ViewBag.dis/@ViewBag.str/@ViewBag.keyword/@i" class="active" style="background-color: #c52d2f;border-color: #c52d2f;color:#fff;">@i</a></li></text>
                         }
                     }
 
