@@ -1,0 +1,33 @@
+﻿@model PagedList.IPagedList<MarketingOnline.Controllers.companyController.itemCat>
+@using PagedList.Mvc;
+
+@if (Model != null)
+{
+    <ul class="blog_category">
+        @foreach (var item in Model)
+        {
+            var link = "/cong-ty/" + ViewBag.spro + "/" + ViewBag.sdis + "/" + ViewBag.sstr;
+            if ((ViewBag.spro == "all" && ViewBag.sdis == "all" && ViewBag.sstr == "all")||(ViewBag.spro != "all" && ViewBag.sdis != "all" && ViewBag.sstr != "all"))
+            {
+                link = "/cong-ty/" + @item.name + "/all/all/all/1";
+            }
+            else
+            {
+                if (ViewBag.spro != "all" && ViewBag.sdis == "all" && ViewBag.sstr == "all")
+                {
+                    link = "/cong-ty/" + ViewBag.spro + "/" + item.name + "/all/all/1"; 
+                }else
+                {
+                    if (ViewBag.spro != "all" && ViewBag.sdis != "all" && ViewBag.sstr == "all")
+                    {
+                        link = "/cong-ty/" + ViewBag.spro + "/" + ViewBag.sdis + "/" + item.name + "/all/1"; 
+                    }
+                }
+            }
+            <li><a href="@link">@item.name <span class="badge">@item.count</span></a></li>
+        }
+    </ul>
+}
+
+
+

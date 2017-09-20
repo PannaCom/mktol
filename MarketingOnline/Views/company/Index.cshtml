@@ -11,11 +11,12 @@
             <div class="col-md-8">
                 <div class="blog-item">
                     <div class="row">
-                        <div class="col-xs-12 col-sm-12 wow fadeInDown">
+                        <div class="col-xs-12 col-sm-12 wow fadeInDown">                            
                             <div class="tab-content">
+                                <h3 style="color:red;">@ViewBag.Title</h3>
                                 @foreach (var item in Model)
                                 {
-                                    var link = "/cong-ty/" + item.tax+"-"+Config.unicodeToNoMark(item.name) + "-" + item.id;
+                                    var link = "/doanh-nghiep/" + item.tax + "-" + Config.unicodeToNoMark(item.name) + "-" + item.id;
                                     <text>
                                         <div class="col-xs-12" style="margin-bottom:10x;margin-top:10px;border-bottom:1px solid #808080;">
                                             <div class=" media">
@@ -40,7 +41,8 @@
                 </div><!--/.blog-item-->
                 <ul class="pagination pagination-lg">
                     <li><a href="#">Trang:</a></li>
-                    @for (int i = 1; i <= 5; i++)
+                    @{ int maxPage = Model.PageCount > 5 ? 5 : Model.PageCount;}
+                    @for (int i = 1; i <= maxPage; i++)
                     {
                         if (i != ViewBag.page)
                         {
@@ -53,7 +55,15 @@
                                 <li><a href="/cong-ty/@ViewBag.pro/@ViewBag.dis/@ViewBag.str/@ViewBag.keyword/@i" class="active" style="background-color: #c52d2f;border-color: #c52d2f;color:#fff;">@i</a></li></text>
                         }
                     }
-
+                    @{
+                        int page = ViewBag.page;
+                        int nextpage = page + 1;
+                        <text>
+                            <li><a href="/cong-ty/@ViewBag.pro/@ViewBag.dis/@ViewBag.str/@ViewBag.keyword/@nextpage">Trang tiếp</a></li>
+                            <li>...</li>
+                            <li><a href="/cong-ty/@ViewBag.pro/@ViewBag.dis/@ViewBag.str/@ViewBag.keyword/@Model.PageCount">Trang cuối</a></li>
+                        </text>
+}
                 </ul><!--/.pagination-->
             </div><!--/.col-md-8-->
             <aside class="col-md-4">
@@ -66,12 +76,15 @@
                         <h3>Chọn Địa Điểm</h3>
                         <div class="row">
                             <div class="col-sm-6">
-                                <ul class="blog_category">
+                                @{
+                                    Html.RenderAction("getCat", new { pro = ViewBag.pro, dis = ViewBag.dis, str = ViewBag.str });
+                                }
+                                @*<ul class="blog_category">
                                     <li><a href="#">Computers <span class="badge">04</span></a></li>
                                     <li><a href="#">Smartphone <span class="badge">10</span></a></li>
                                     <li><a href="#">Gedgets <span class="badge">06</span></a></li>
                                     <li><a href="#">Technology <span class="badge">25</span></a></li>
-                                </ul>
+                                </ul>*@
                             </div>
                         </div>
                  </div>

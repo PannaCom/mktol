@@ -1,0 +1,74 @@
+﻿@model MarketingOnline.Models.company
+@{
+
+    Layout = "~/Views/Shared/_LayoutContent.cshtml";
+}
+<section id="blog" class="container" style="margin-top:15px;">
+    <div class="blog">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="blog-item">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-10 blog-content">
+                            <h2>@ViewBag.title</h2>
+                            <p>Tên tiếng Anh: <i>@Model.name_en</i></p>
+                            @if (Model.owner != null && Model.owner != "")
+                            {
+                                <text><p><b>Chủ sở hữu:</b> @Model.owner</p></text>
+                            }
+                            <p>Mã số thuế: @Model.tax</p>
+                            <p>Ngày thành lập: @String.Format("{0:dd/MM/yyyy}", @Model.date_startup)</p>
+                            <p>Tỉnh thành phố: @Model.province</p>
+                            <p>Địa chỉ: @Model.address</p>
+                            <p>Ngành nghề kinh doanh: <i>@Model.business</i></p>
+                            @if (Model.employees != null)
+                            {
+                                <text><p><b>Số nhân viên:</b> @Model.employees</p></text>
+                            }
+                            @if (Model.phone != null && Model.phone != "")
+                            {
+                                <text><p><b>Số điện thoại:</b> @Model.phone</p></text>
+                            }
+                            @if (Model.tax_office != null && Model.tax_office != "")
+                            {
+                                <text><p><b>Cơ quan thuế:</b> @Model.tax_office</p></text>
+                            }
+                        </div>
+                    </div>
+                </div><!--/.blog-item-->
+            </div><!--/.col-md-8-->
+            <aside class="col-md-4">
+                <div class="widget search">
+                    <form role="form">
+                        <input type="text" class="form-control search_box" autocomplete="off" placeholder="Gõ tìm kiếm">
+                    </form>
+                </div>               
+                <div class="widget categories">
+                    <h3>Công ty khác</h3>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            @if (ViewBag.newsother != null)
+                            {
+                                foreach (var item in ViewBag.newsother)
+                                {
+                                    var link = "/doanh-nghiep/" + item.tax + "-" + Config.unicodeToNoMark(item.name) + "-" + item.id;
+                                    <div class="single_comments" style="width: 100%; float: left;">
+                                        <div class="col-md-12">
+                                            <a href="@link"><h2>@item.name</h2></a>
+                                        </div> 
+                                    </div>
+                                }
+                            }
+                        </div>
+                    </div>
+                </div><!--/.recent comments-->
+                @*<div class="widget tags">
+                        <h3>Từ khóa</h3>
+                        <ul class="tag-cloud">
+                            <li><a class="btn btn-xs btn-primary" href="#"></a></li>
+                        </ul>
+                    </div>*@<!--/.tags-->
+            </aside>
+        </div><!--/.row-->
+    </div><!--/.blog-->
+</section><!--/#blog-->
