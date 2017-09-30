@@ -20,7 +20,7 @@
                             <p>Ngày thành lập: @String.Format("{0:dd/MM/yyyy}", @Model.date_startup)</p>
                             <p>Tỉnh thành phố: @Model.province</p>
                             <p>Địa chỉ: @Model.address</p>
-                            <p>Ngành nghề kinh doanh: <i>@Model.business</i></p>
+                            <p>Ngành nghề kinh doanh: <i><a href="/cong-ty/all/all/all/@Model.business/1">@Model.business</a></i></p>
                             @if (Model.employees != null)
                             {
                                 <text><p><b>Số nhân viên:</b> @Model.employees</p></text>
@@ -33,7 +33,10 @@
                             {
                                 <text><p><b>Cơ quan thuế:</b> @Model.tax_office</p></text>
                             }
-                        </div>
+                            <div class="alert alert-success">
+                                <strong>Quảng cáo: Nhận thiết kế web, adword, marketing online, thiết kế logo, nhận diện thương hiệu</strong> Liên hệ <a href="tel:0979776427" class="alert-link">097 977 6427</a>, Email <a href="mailto:vnnvh80@gmail.com" class="alert-link">vnnvh80@gmail.com</a>
+                            </div>
+                        </div>                        
                     </div>
                 </div><!--/.blog-item-->
             </div><!--/.col-md-8-->
