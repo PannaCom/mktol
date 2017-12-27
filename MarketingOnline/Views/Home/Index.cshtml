@@ -1,158 +1,114 @@
 ﻿@{
     ViewBag.Title = "Home Page";
-    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
-<section id="feature">
+<!--main section-->
+<section class="bg-texture hero pt-5">
     <div class="container">
-        <div class="center wow fadeInDown">
-            <h2 style="margin-top:15px;">NHU CẦU CỦA KHÁCH HÀNG</h2>
-            <p class="lead">Khách hàng cần gì và tại sao phải thực hiện Marketing Online</p>
+        <div class="row d-sm-flex">
+            <div class="col-sm-6 text-white wow fadeIn">
+                <div class="mt-5 pt-5 hidden-sm-down"></div>
+                <h1>Tư vấn marketing online</h1>
+                <h2>
+                    Giúp bạn quảng bá thương hiệu sản phẩm đến hàng triệu người
+                </h2>
+                <p class="mt-4 lead">
+                    Giúp bạn xây dựng tập khách hàng, chọn lựa sản phẩm, thị trường, xây dựng kênh bán hàng và marketing online
+                </p>
+                <p>
+                    <b>CEO Nguyễn Viết Huy - Giám đốc Công ty Minh Việt</b>
+                </p>
+                <p >
+                    <a href="#" class="mr-2"><img src="~/Content/images/ct1.jpg" class="store-img" style="width:100%;height:100%;"/></a>
+                </p>
+            </div>
+            <div class="col-sm-6 pt-5 hidden-sm-down wow fadeInRight">
+                <img class="img-fluid mx-auto d-block" src="~/Content/new/img/shot-3.png" />
+            </div>
         </div>
-        <div class="row">
-            <div class="features">
-                <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
-                    <div class="feature-wrap">
-                        <i class="fa fa-user"></i>
-                        <h2>Thói quen người dùng</h2>
-                        <h3>Họ tìm kiếm sản phẩm dịch vụ chủ yếu qua internet và mạng xã hội</h3>
-                    </div>
-                </div><!--/.col-md-4-->
-                <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
-                    <div class="feature-wrap">
-                        <i class="fa fa-globe"></i>
-                        <h2>Xu hướng của thế giới</h2>
-                        <h3>Quảng bá sản phẩm dịch vụ của bạn qua internet là cách cả thế giới đang làm</h3>
-                    </div>
-                </div><!--/.col-md-4-->
-                <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
-                    <div class="feature-wrap">
-                        <i class="fa fa-money"></i>
-                        <h2>Tiết kiệm chi phí</h2>
-                        <h3>Giảm tối đa chi phí cho nhân lực và tài chính, nguồn lực khác</h3>
-                    </div>
-                </div><!--/.col-md-4-->
-
-                <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
-                    <div class="feature-wrap">
-                        <i class="fa fa-plus"></i>
-                        <h2>Hiệu quả rõ ràng</h2>
-                        <h3>Thấy được hiệu quả tức thì theo thời gian thực</h3>
-                    </div>
-                </div><!--/.col-md-4-->
-                <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
-                    <div class="feature-wrap">
-                        <i class="fa fa-star-half-full"></i>
-                        <h2>Báo cáo chi tiết</h2>
-                        <h3>Xem được thống kê, báo cáo chi tiết với số liệu thực</h3>
-                    </div>
-                </div><!--/.col-md-4-->
-                <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
-                    <div class="feature-wrap">
-                        <i class="fa fa-forward"></i>
-                        <h2>Chiến lược kinh doanh</h2>
-                        <h3>Giúp khách hàng điều chỉnh chiến lược kinh doanh</h3>
-                    </div>
-                </div><!--/.col-md-4-->
-            </div><!--/.services-->
-        </div><!--/.row-->
-    </div><!--/.container-->
-</section><!--/#feature-->
-<section id="services" class="service-item">
+    </div>
+</section>
+<!--main features-->
+<section class="bg-alt" id="features">
     <div class="container">
-        <div class="center wow fadeInDown">
-            <h2 style="margin-top:15px;">Dịch Vụ Công Ty</h2>
-            <p class="lead">Lựa chọn các dịch vụ phù hợp với nhu cầu của bạn</p>
+        <div class="row">
+            <div class="col-md-6 offset-md-3 col-sm-8 offset-sm-2 col-xs-12 text-center wow fadeIn">
+                <h2 class="text-primary">Vì sao bạn cần tư vấn?</h2>
+                <p class="lead">
+                    Vì chúng tôi giúp bạn tiết kiệm thời gian và tiền bạc
+                </p>
+            </div>
         </div>
-        <div class="row">
-            <div class="col-sm-6 col-md-4">
-                <div class="media services-wrap wow fadeInDown">
-                    <div class="pull-left">
-                        <img class="img-responsive" src="/Content/images/services/services1.png">
-                    </div>
-                    <div class="media-body">
-                        <h3 class="media-heading">Thiết kế web</h3>
-                        <p style="text-align:justify;">Giúp bạn có một website giới thiệu công ty, quảng bá sản phẩm, đơn giản, dễ sử dụng</p>
+        <div class="row d-md-flex mt-4 text-center">
+            <div class="col-sm-3 mt-2">
+                <div class="card border-none wow fadeIn">
+                    <div class="card-block">
+                        <i class="material-icons dp36 icon-box">camera_enhance</i>
+                        <h5 class="card-title text-primary pt-5">Tìm đúng khách hàng</h5>
+                        <p class="card-text">Họ là ai? Nơi sống, giới tính, hành vi</p>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6 col-md-4">
-                <div class="media services-wrap wow fadeInDown">
-                    <div class="pull-left">
-                        <img class="img-responsive" src="/Content/images/services/services2.png">
-                    </div>
-                    <div class="media-body">
-                        <h3 class="media-heading">SEO Marketing</h3>
-                        <p style="text-align:justify;">Cung cấp đội ngũ viết bài, biên tập chuẩn SEO cho website của bạn</p>
+            <div class="col-sm-3 mt-2">
+                <div class="card border-none wow fadeIn">
+                    <div class="card-block">
+                        <i class="material-icons dp36 icon-box">crop</i>
+                        <h5 class="card-title text-primary pt-5">Chọn đúng sản phẩm</h5>
+                        <p class="card-text">Nhận diện thương hiệu, đặc tính nổi bật, xu hướng của sản phẩm</p>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6 col-md-4">
-                <div class="media services-wrap wow fadeInDown">
-                    <div class="pull-left">
-                        <img class="img-responsive" src="/Content/images/services/services3.png">
-                    </div>
-                    <div class="media-body">
-                        <h3 class="media-heading">Facebook Marketing</h3>
-                        <p style="text-align:justify;">Giới thiệu công ty, dịch vụ của bạn trên mạng xã hội facebook</p>
+            <div class="col-sm-3 mt-2">
+                <div class="card border-none wow fadeIn">
+                    <div class="card-block">
+                        <i class="material-icons dp36 icon-box">cloud_upload</i>
+                        <h5 class="card-title text-primary pt-5">Xây dựng kênh bán hàng</h5>
+                        <p class="card-text">Thiết lập các kênh bán hàng online hiệu quả</p>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6 col-md-4">
-                <div class="media services-wrap wow fadeInDown">
-                    <div class="pull-left">
-                        <img class="img-responsive" src="/Content/images/services/services4.png">
-                    </div>
-                    <div class="media-body">
-                        <h3 class="media-heading">Forum Seeding</h3>
-                        <p>Quảng bá trên các diễn đàn, website khác</p>
+            <div class="col-sm-3 mt-2">
+                <div class="card border-none wow fadeIn">
+                    <div class="card-block">
+                        <i class="material-icons dp36 icon-box">invert_colors</i>
+                        <h5 class="card-title text-primary pt-5">Xây dựng kế hoạch tài chính</h5>
+                        <p class="card-text">Phân bổ đúng vào các kênh marketing</p>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6 col-md-4">
-                <div class="media services-wrap wow fadeInDown">
-                    <div class="pull-left">
-                        <img class="img-responsive" src="/Content/images/services/services5.png">
-                    </div>
-                    <div class="media-body">
-                        <h3 class="media-heading">Adword Google</h3>
-                        <p>Giúp khách tìm thấy bạn qua Google hàng ngày</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <div class="media services-wrap wow fadeInDown">
-                    <div class="pull-left">
-                        <img class="img-responsive" src="/Content/images/services/services6.png">
-                    </div>
-                    <div class="media-body">
-                        <h3 class="media-heading">Social Marketing</h3>
-                        <p>Blog, G+, Twitter, Pinterest, Instagram,...</p>
-                    </div>
-                </div>
-            </div>
-        </div><!--/.row-->
-    </div><!--/.container-->
-</section><!--/#services-->
-<section id="contentindex">
+        </div>
+    </div>
+</section>
+<!--extra features-->
+<section class="bg-inverse text-white" id="extra-features">
     <div class="container">
         <div class="row">
-            <div class="col-xs-12 col-sm-12 wow fadeInDown">
-                <div class="tab-content">
-                    @foreach (var item in ViewBag.news)
-                    {
-                        var link = "/" + MarketingOnline.Config.unicodeToNoMark(@item.title) + "-" + @item.id;
-                        <div class="col-xs-6">
-                            <div class=" media">
-                                <div class="pull-left">
-                                    <a href="@link"><img class="img-responsive" src="@item.image" style="width:304px;height:200px;"></a>
-                                </div>
-                                <div class="media-body">
-                                    <a href="@link"><h2>@item.title</h2></a>
-                                </div>
-                            </div>
-                        </div>
-                    }
-                </div>
+            <div class="col-md-6 offset-md-3 col-sm-8 offset-sm-2 col-xs-12 text-center wow fadeIn">
+                <h2 class="text-orange">MARKETING ĐA KÊNH</h2>
+                <p class="lead">
+                    TẠO DỰNG CÁC KÊNH BÁN HÀNG HIỆU QUẢ
+                </p>
+            </div>
+        </div>
+        <div class="row d-md-flex mt-5">
+            <div class="col-sm-4 wow fadeIn">
+                <h5 class="text-orange">THIẾT KẾ WEBSITE</h5>
+                <p>Thiết lập website để quảng bá sản phẩm với hình ảnh đẹp mắt, nội dung hấp dẫn</p>
+                <h5 class="text-orange pt-5">ZALO MARKETING</h5>
+                <p>Thiết lập OA, Shop cửa hàng trên zalo</p>
+                <h5 class="text-orange pt-5">FACEBOOK MARKETING</h5>
+                <p>Thiết lập fanpage, viết bài, quảng cáo</p>
+            </div>
+            <div class="col-sm-4 wow fadeIn">
+                <img class="img-fluid mx-auto d-block pb-3" src="~/Content/images/ct1.jpg" alt="Gallery">
+            </div>
+            <div class="col-sm-4 wow fadeIn">
+                <h5 class="text-orange">Thương mại điện tử</h5>
+                <p>Thiết lập các shop bán hàng trên các trang thương mại điện tử (lazada, shopee,...)</p>
+                <h5 class="text-orange pt-5">Adword</h5>
+                <p>Quảng cáo trên Google Adword để ra đơn hàng ngay</p>
+                <h5 class="text-orange pt-5">Xây dựng hệ thống đại lý</h5>
+                <p>Xây dựng đội sales, cộng tác viên, đại lý phân phối</p>
             </div>
         </div>
     </div>
