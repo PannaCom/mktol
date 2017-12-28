@@ -2,6 +2,65 @@
     ViewBag.Title = "Home Page";
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
+<script>
+    function goi(stt) {
+        if (stt == 1) {
+            document.getElementById("goi").value = "1";
+        }
+        if (stt == 2) {
+            document.getElementById("goi").value = "2";
+        }
+        if (stt == 3) {
+            document.getElementById("goi").value = "3";
+        }
+        if (stt == 4) {
+            document.getElementById("goi").value = "4";
+        }
+        if (stt == 5) {
+            document.getElementById("goi").value = "5";
+        }
+        if (stt == 6) {
+            document.getElementById("goi").value = "6";
+        }
+    }
+    function muahang() {
+        var sphone = $("#phone").val();
+        var semail = $("#email").val();
+        var snotice = "Đặt gói marketing";
+        if (sphone == "") {
+            alert("Nhập số điện thoại của bạn");
+            document.getElementById("phone").focus();
+            return;
+        }
+        if (semail == "") {
+            alert("Nhập email của bạn");
+            document.getElementById("email").focus();
+            return;
+        }
+        if (type == 0) {
+            document.getElementById("sendMessageButton").disabled = true;
+        } else {
+            document.getElementById("sendMessageButton2").disabled = true;
+        }
+        $.ajax({
+            url: "/Home/sendmail", type: 'post',
+            data: { phone: sphone, email: semail, notice: snotice },
+            success: function (rs) {
+                if (rs == '1') {
+                    alert("Đã nhận được đăng ký của bạn. Chúng tôi sẽ liên hệ sớm nhất để tư vấn! Cảm ơn bạn!");
+                    //location.reload();
+                } else {
+                    alert("Hiện tạm thời chúng tôi chưa thể nhận đăng ký thời điểm này! Xin bạn gọi số 0939126888 để được tư vấn");
+                }
+                if (type == 0) {
+                    document.getElementById("sendMessageButton").disabled = false;
+                } else {
+                    document.getElementById("sendMessageButton2").disabled = false;
+                }
+            }
+        });
+    }
+</script>
 <!--main section-->
 <section class="bg-texture hero pt-5">
     <div class="container">
@@ -100,7 +159,7 @@
                 <p>Thiết lập fanpage, viết bài, quảng cáo</p>
             </div>
             <div class="col-sm-4 wow fadeIn">
-                <img class="img-fluid mx-auto d-block pb-3" src="~/Content/images/ct1.jpg" alt="Gallery">
+                <img class="img-fluid mx-auto d-block pb-3" src="~/Content/new/img/kenh.png" alt="Đa Kênh">
             </div>
             <div class="col-sm-4 wow fadeIn">
                 <h5 class="text-orange">Thương mại điện tử</h5>
@@ -109,6 +168,213 @@
                 <p>Quảng cáo trên Google Adword để ra đơn hàng ngay</p>
                 <h5 class="text-orange pt-5">Xây dựng hệ thống đại lý</h5>
                 <p>Xây dựng đội sales, cộng tác viên, đại lý phân phối</p>
+            </div>
+        </div>
+    </div>
+</section>
+<!--pricing-->
+<section class="bg-alt" id="pricing">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3 col-sm-8 offset-sm-2 col-xs-12 text-center">
+                <h2 class="text-primary">Bảng Giá Tư Vấn</h2>
+                <p class="lead">
+                    Từ cơ bản đến cao cấp
+                </p>
+            </div>
+        </div>
+        <div class="row d-md-flex mt-4 text-center">
+            <div class="col-sm-4 mt-2 wow fadeIn" >
+                <div class="card card-outline-primary">
+                    <div class="card-block" style="min-height:632px;">
+                        <h5 class="card-title pt-4 text-orange">Gói 1: Cơ Bản</h5>
+                        <h3 class="card-title text-primary pt-4">Miễn Phí</h3>
+                        <p class="card-text text-muted pb-3 border-bottom">Tặng Tài Liệu Hướng Dẫn</p>
+                        <ul class="list-unstyled pricing-list">
+                            <li>- Cách tìm tập khách hàng, sản phẩm</li>
+                            <li>- 16 bước viết bài, viết quảng cáo thu hút mua hàng</li>
+                            <li>- Cách viết tiêu đề quảng cáo gây chú ý</li>
+                            <li>- Lựa chọn kênh bán hàng</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-primary btn-radius" onclick="goi(1);">Đăng Ký</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4 mt-2 wow fadeIn" >
+                <div class="card card-outline-primary bg-primary text-white">
+                    <div class="card-block" style="min-height:632px;">
+                        <h5 class="card-title pt-4 text-white">Gói 2: Tiêu Chuẩn</h5>
+                        <h3 class="card-title text-orange pt-4"><sup>vnđ</sup> 250.000</h3>
+                        <p class="card-text text-muted pb-3 border-bottom">1 usb bao gồm</p>
+                        <ul class="list-unstyled pricing-list">
+                            <li>- Các Video bài giảng hướng dẫn từ A đến Z</li>
+                            <li>- Tìm khách hàng, sản phẩm</li>
+                            <li>- Lựa chọn đúng sản phẩm đang hot</li>
+                            <li>- Chọn đúng kênh marketing</li>
+                            <li>- Cách tạo website hiệu quả</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-white btn-radius" onclick="goi(2);">Đăng Ký</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4 mt-2 wow fadeIn" >
+                <div class="card card-outline-primary">
+                    <div class="card-block" style="min-height:632px;">
+                        <h5 class="card-title pt-4 text-orange">Gói 3: Nâng Cao</h5>
+                        <h3 class="card-title text-primary pt-4"><sup>vnđ</sup> 490.000</h3>
+                        <p class="card-text text-muted pb-3 border-bottom">Học Quảng Cáo Zalo</p>
+                        <ul class="list-unstyled pricing-list">
+                            <li>Các bài giảng video hướng dẫn</li>
+                            <li>- Cách thiết lập cửa hàng, thương hiệu trên zalo</li>
+                            <li>- Cách viết bài, đăng sản phẩm zalo</li>
+                            <li>- Cách chạy quảng cáo ra đơn hàng zalo</li>
+                            <li>- Các thủ thuật chạy zalo hiệu quả</li>
+                            <li>- Tư vấn online qua skype, email</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-primary btn-radius" onclick="goi(3);">Đăng Ký</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4 mt-2 wow fadeIn">
+                <div class="card card-outline-primary bg-primary text-white">
+                    <div class="card-block" style="min-height:632px;">
+                        <h5 class="card-title pt-4 text-white">Gói 4: Chuyên Gia</h5>
+                        <h3 class="card-title text-orange pt-4"><sup>vnđ</sup> 3.500.000</h3>
+                        <p class="card-text text-muted pb-3 border-bottom">Thiết Kế Website Sản Phẩm</p>
+                        <ul class="list-unstyled pricing-list">
+                            <li>Nơi bạn đăng bán sản phẩm</li>
+                            <li>- Lựa chọn mẫu website đẹp, tiện dụng</li>
+                            <li>- Thiết kế, hướng dẫn đăng bài sản phẩm</li>
+                            <li>- Hướng dẫn cách viết bài quảng bá sản phẩm</li>
+                            <li>- Tư vấn cách chụp hình sản phẩm</li>
+                            <li>- Tư vấn online qua skype, email</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-white btn-radius" onclick="goi(4);">Đăng Ký</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4 mt-2 wow fadeIn">
+                <div class="card card-outline-primary ">
+                    <div class="card-block" style="min-height:632px;">
+                        <h5 class="card-title pt-4 text-orange">Gói 5: Chuyên Gia Cao Cấp</h5>
+                        <h3 class="card-title text-primary pt-4"><sup>vnđ</sup> 5.500.000</h3>
+                        <p class="card-text text-muted pb-3 border-bottom">HỌC ZALO MARKETING TRỰC TIẾP</p>
+                        <ul class="list-unstyled pricing-list">
+                            <li>- Học trực tiếp quảng cáo zalo từ A đến Z</li>
+                            <li>- Lập kế hoạch triển khai</li>
+                            <li>- Phân tích chân dung khách hàng</li>
+                            <li>- Nhắm tới đúng khách hàng, thời điểm</li>
+                            <li>- Phân tích quảng cáo</li>
+                            <li>- Học trong 5 buổi tối, hoặc nguyên 2 ngày(16 tiếng) liên tiếp</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-primary btn-radius" onclick="goi(5);">Đăng Ký</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4 mt-2 wow fadeIn">
+                <div class="card card-outline-primary bg-primary text-white">
+                    <div class="card-block" style="min-height:632px;">
+                        <h5 class="card-title pt-4 text-white">Gói 6: Gold</h5>
+                        <h3 class="card-title text-orange pt-4"><sup>vnđ</sup> >20.000.000</h3>
+                        <p class="card-text text-muted pb-3 border-bottom">1 tháng</p>
+                        <ul class="list-unstyled pricing-list">
+                            <li>Tư vấn và triển khai quảng cáo cho cá nhân, doanh nghiệp</li>
+                            <li>- Lên chiến dịch quảng cáo dựa trên tập khách hàng, sản phẩm</li>
+                            <li>- Lập kế hoạch tài chính, lựa chọn kênh quảng cáo</li>
+                            <li>- Triển khai chiến dịch quảng cáo</li>
+                            <li>- Biên tập nội dung, hình ảnh</li>
+                            <li>- Tư vấn online qua skype, email</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-white btn-radius" onclick="goi(6);">Đăng Ký</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="bg-orange" id="contact">
+    <div class="container">
+        <div class="row d-md-flex text-center wow fadeIn">
+            <div class="col-md-6 offset-md-3 col-sm-10 offset-sm-1 col-xs-12">
+                <h2 class="text-primary">Đăng Ký Dịch Vụ</h2>
+                <p class="mt-4 lead">
+                    <input class="form-control" name="phone" id="phone" placeholder="Nhập số điện thoại" type="text">
+                </p>
+                <p class="mt-5">
+                    <input class="form-control" name="email" id="email" placeholder="Nhập email" type="text">
+                </p>
+                <p class="mt-5">
+                    <select id="goi" name="goi" class="form-control" style="display:block;float:left;position:relative;" multiple>
+                        <option selected value="1">Gói 1: Cơ bản</option>
+                        <option value="2">Gói 2: Tiêu chuẩn</option>
+                        <option value="3">Gói 3: Nâng cao</option>
+                        <option value="4">Gói 4: Chuyên gia</option>
+                        <option value="5">Gói 5: Chuyên gia cao cấp</option>
+                        <option value="6">Gói 6: Gold</option>
+                    </select>
+                    <br /><br /><br />
+                    <a href="#contact" class="btn btn-white btn-radius">Đăng Ký</a>
+                </p>   
+            </div>
+        </div>
+    </div>
+</section>
+<section class="bg-alt" id="team">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3 col-sm-8 offset-sm-2 col-xs-12 text-center">
+                <h2 class="text-primary">Các Chuyên Gia</h2>
+                <p class="lead">
+                    Chúng tôi bao gồm các chuyên gia lâu năm ở lĩnh vực công nghệ, marketing và truyền thông
+                </p>
+            </div>
+        </div>
+        <div class="row d-md-flex mt-4 text-center">
+            <div class="col-sm-4 mt-2 wow fadeIn">
+                <div class="card border-none">
+                    <div class="card-block">
+                        <img src="~/Content/new/img/avatar.png" alt="Male" class="img-team img-fluid rounded-circle" />
+                        <h5 class="card-title text-primary pt-4">Nguyễn Viết Huy</h5>
+                        <p class="card-text">CEO - Giám Đốc Điều Hành</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4 mt-2 wow fadeIn">
+                <div class="card border-none">
+                    <div class="card-block">
+                        <img src="~/Content/new/img/thuy.jpg" alt="Male" class="img-team img-fluid rounded-circle" />
+                        <h5 class="card-title text-primary pt-4">Nguyễn Diệu Thùy</h5>
+                        <p class="card-text">Giám đốc Truyền thông - Trưởng phòng quảng cáo báo Vnexpress.Net</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4 mt-2 wow fadeIn">
+                <div class="card border-none">
+                    <div class="card-block">
+                        <img src="~/Content/new/img/lien.jpg" alt="Male" class="img-team img-fluid rounded-circle" />
+                        <h5 class="card-title text-primary pt-4">Đỗ Hoàng Liên</h5>
+                        <p class="card-text">Giám đốc Marketing</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--contact-->
+<section class="bg-texture-collage p-0" id="contact">
+    <div class="container">
+        <div class="row d-md-flex text-white text-center wow fadeIn">
+            <div class="col-sm-4 p-5">
+                <p><em class="material-icons dp36">phone</em></p>
+                <p class="lead">+0979776427</p>
+            </div>
+            <div class="col-sm-4 p-5">
+                <p><em class="material-icons dp36">email</em></p>
+                <p class="lead">vnnvh80@gmail.com</p>
+            </div>
+            <div class="col-sm-4 p-5">
+                <p><em class="material-icons dp36">location_on</em></p>
+                <p class="lead">Linh Đàm, Hoàng Mai, Hà Nội</p>
             </div>
         </div>
     </div>
