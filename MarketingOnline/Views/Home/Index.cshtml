@@ -1,7 +1,8 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "marketing online, cách bán hàng online, zalo ads";
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
+<script src="/Content/js/jquery.js"></script>
 <script>
     function goi(stt) {
         if (stt == 1) {
@@ -26,7 +27,9 @@
     function muahang() {
         var sphone = $("#phone").val();
         var semail = $("#email").val();
-        var snotice = "Đặt gói marketing";
+        var sname = $("#name").val();
+        var snotice = $("#goi option:selected").text();
+        
         if (sphone == "") {
             alert("Nhập số điện thoại của bạn");
             document.getElementById("phone").focus();
@@ -37,26 +40,20 @@
             document.getElementById("email").focus();
             return;
         }
-        if (type == 0) {
-            document.getElementById("sendMessageButton").disabled = true;
-        } else {
-            document.getElementById("sendMessageButton2").disabled = true;
-        }
+        
+        $("#sendMessageButton2").html("Đang đăng ký xin đợi");
+       
         $.ajax({
             url: "/Home/sendmail", type: 'post',
-            data: { phone: sphone, email: semail, notice: snotice },
+            data: { phone: sphone, email: semail, name: sname, notice: snotice },
             success: function (rs) {
                 if (rs == '1') {
                     alert("Đã nhận được đăng ký của bạn. Chúng tôi sẽ liên hệ sớm nhất để tư vấn! Cảm ơn bạn!");
                     //location.reload();
                 } else {
-                    alert("Hiện tạm thời chúng tôi chưa thể nhận đăng ký thời điểm này! Xin bạn gọi số 0939126888 để được tư vấn");
+                    alert("Hiện tạm thời chúng tôi chưa thể nhận đăng ký thời điểm này! Xin bạn gọi số 0979776427 để được tư vấn");
                 }
-                if (type == 0) {
-                    document.getElementById("sendMessageButton").disabled = false;
-                } else {
-                    document.getElementById("sendMessageButton2").disabled = false;
-                }
+                $("#sendMessageButton2").html("ĐĂNG KÝ");
             }
         });
     }
@@ -304,6 +301,9 @@
                     <input class="form-control" name="email" id="email" placeholder="Nhập email" type="text">
                 </p>
                 <p class="mt-5">
+                    <input class="form-control" name="name" id="name" placeholder="Nhập Họ tên" type="text">
+                </p>
+                <p class="mt-5">
                     <select id="goi" name="goi" class="form-control" style="display:block;float:left;position:relative;" multiple>
                         <option selected value="1">Gói 1: Cơ bản</option>
                         <option value="2">Gói 2: Tiêu chuẩn</option>
@@ -313,7 +313,7 @@
                         <option value="6">Gói 6: Gold</option>
                     </select>
                     <br /><br /><br />
-                    <a href="#contact" class="btn btn-white btn-radius">Đăng Ký</a>
+                    <a href="#contact" class="btn btn-white btn-radius" id="sendMessageButton" onclick="muahang();">Đăng Ký</a>
                 </p>   
             </div>
         </div>
@@ -325,7 +325,7 @@
             <div class="col-md-6 offset-md-3 col-sm-8 offset-sm-2 col-xs-12 text-center">
                 <h2 class="text-primary">Các Chuyên Gia</h2>
                 <p class="lead">
-                    Chúng tôi bao gồm các chuyên gia lâu năm ở lĩnh vực công nghệ, marketing và truyền thông
+                    Chúng tôi bao gồm các chuyên gia kinh nghiệm ở lĩnh vực công nghệ, marketing và truyền thông
                 </p>
             </div>
         </div>
