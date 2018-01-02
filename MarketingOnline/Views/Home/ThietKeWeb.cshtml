@@ -131,6 +131,11 @@
             document.getElementById("email").focus();
             return;
         }
+        if (sname == "") {
+            alert("Nhập họ tên (và địa chỉ của bạn để chúng tôi gửi usb tài liệu)");
+            document.getElementById("name").focus();
+            return;
+        }
 
         $("#sendMessageButton2").html("Đang đăng ký xin đợi");
 
@@ -328,8 +333,8 @@
                 <div class="card card-outline-primary">
                     <div class="card-block" style="min-height:632px;">
                         <h5 class="card-title pt-4 text-orange">Gói 1: Miễn phí</h5>
-                        <h3 class="card-title text-orange pt-4"><sup>vnđ</sup> 180.000 (usb ghi tài liệu và phí ship)</h3>
-                        <p class="card-text text-muted pb-3 border-bottom">Tặng Tài Liệu Hướng Dẫn</p>
+                        <h3 class="card-title text-orange pt-4"><sup>vnđ</sup> 180.000 </h3>
+                        <p class="card-text text-muted pb-3 border-bottom">Tặng Tài Liệu Hướng Dẫn, bạn chỉ chịu phí (usb ghi tài liệu và phí ship)</p>
                         <ul class="list-unstyled pricing-list">
                             <li>- Cách làm web miễn phí bằng phần mềm Google</li>
                             <li>- Từ không biết gì đến biết thiết kế web thành thạo</li>
@@ -345,8 +350,8 @@
                 <div class="card card-outline-primary bg-primary text-white">
                     <div class="card-block" style="min-height:632px;">
                         <h5 class="card-title pt-4 text-white">Gói 2: Tiêu Chuẩn</h5>
-                        <h3 class="card-title text-orange pt-4"><sup>vnđ</sup> 3.500.000 (miễn phí host)</h3>
-                        <p class="card-text text-muted pb-3 border-bottom">gói website tiêu chuẩn</p>
+                        <h3 class="card-title text-orange pt-4"><sup>vnđ</sup> 3.500.000</h3>
+                        <p class="card-text text-muted pb-3 border-bottom">gói website tiêu chuẩn,  (miễn phí host)</p>
                         <ul class="list-unstyled pricing-list">
                             <li>- Với hàng trăm mẫu mã để bạn lựa chọn qua email</li>
                             <li>- Đa ngành, đa lĩnh vực</li>
