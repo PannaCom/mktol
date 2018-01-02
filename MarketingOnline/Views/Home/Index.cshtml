@@ -2,6 +2,20 @@
     ViewBag.Title = "marketing online, cách bán hàng online, zalo ads";
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
+<style>
+    .hotline {
+    position: fixed;
+    bottom: 0;
+    z-index: 10;
+    height: 28px;
+    left: 0;
+    background: #fbe016;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    line-height: 29px;
+    }
+</style>
 <script src="/Content/js/jquery.js"></script>
 <script>
     function goi(stt) {
@@ -28,7 +42,7 @@
         var sphone = $("#phone").val();
         var semail = $("#email").val();
         var sname = $("#name").val();
-        var snotice = $("#goi option:selected").text();
+        var snotice = $("#goi option:selected").text() + ", " + window.location.href;
         
         if (sphone == "") {
             alert("Nhập số điện thoại của bạn");
@@ -91,7 +105,7 @@
             <div class="col-md-6 offset-md-3 col-sm-8 offset-sm-2 col-xs-12 text-center wow fadeIn">
                 <h2 class="text-primary">Vì sao bạn cần tư vấn?</h2>
                 <p class="lead">
-                    Vì chúng tôi giúp bạn tiết kiệm thời gian và tiền bạc
+                    Vì chúng tôi giúp bạn tiết kiệm thời gian và tiền bạc, gọi ngay 0979776427
                 </p>
             </div>
         </div>
@@ -313,7 +327,7 @@
                         <option value="6">Gói 6: Gold</option>
                     </select>
                     <br /><br /><br />
-                    <a href="#contact" class="btn btn-white btn-radius" id="sendMessageButton" onclick="muahang();">Đăng Ký</a>
+                    <a href="#contact" class="btn btn-white btn-radius" id="sendMessageButton2" onclick="muahang();">Đăng Ký</a>
                 </p>   
             </div>
         </div>
@@ -379,3 +393,9 @@
         </div>
     </div>
 </section>
+<div class="hotline" style="display:block;">
+    <div class="container">
+        <div class="iconcall"><a href="tel:0979776427" class="phonenummber " style="color:blue;">Gọi 097 977 6427</a>
+        </div>
+    </div>
+</div>
