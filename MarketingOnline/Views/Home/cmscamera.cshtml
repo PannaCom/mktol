@@ -1,0 +1,372 @@
+﻿@{
+    ViewBag.Title = "Cung cấp phần mềm CMS Camera giá cả rẻ nhất";
+    ViewBag.des = "Giúp bạn xem Camera trực tiếp trên máy tính";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+<style>
+    .hotline {
+        position: fixed;
+        bottom: 0;
+        z-index: 10;
+        height: 28px;
+        left: 0;
+        background: #fbe016;
+        width: 100%;
+        text-align: center;
+        color: #fff;
+        line-height: 29px;
+    }
+</style>
+<script src="/Content/js/jquery.js"></script>
+<script>
+    function goi(stt) {
+        if (stt == 1) {
+            document.getElementById("goi").value = "1";
+        }
+        if (stt == 2) {
+            document.getElementById("goi").value = "2";
+        }
+        if (stt == 3) {
+            document.getElementById("goi").value = "3";
+        }
+        if (stt == 4) {
+            document.getElementById("goi").value = "4";
+        }
+        if (stt == 5) {
+            document.getElementById("goi").value = "5";
+        }
+        if (stt == 6) {
+            document.getElementById("goi").value = "6";
+        }
+    }
+    function muahang() {
+        var sphone = $("#phone").val();
+        var semail = $("#email").val();
+        var sname = $("#name").val();
+        var snotice = $("#goi option:selected").text() + ", " + window.location.href;
+
+        if (sphone == "") {
+            alert("Nhập số điện thoại của bạn");
+            document.getElementById("phone").focus();
+            return;
+        }
+        if (semail == "") {
+            alert("Nhập email của bạn");
+            document.getElementById("email").focus();
+            return;
+        }
+
+        $("#sendMessageButton2").html("Đang đăng ký xin đợi");
+
+        $.ajax({
+            url: "/Home/sendmail", type: 'post',
+            data: { phone: sphone, email: semail, name: sname, notice: snotice },
+            success: function (rs) {
+                if (rs == '1') {
+                    alert("Đã nhận được đăng ký của bạn. Chúng tôi sẽ liên hệ sớm nhất để tư vấn! Cảm ơn bạn!");
+                    //location.reload();
+                } else {
+                    alert("Hiện tạm thời chúng tôi chưa thể nhận đăng ký thời điểm này! Xin bạn gọi số 0979776427 để được tư vấn");
+                }
+                $("#sendMessageButton2").html("ĐĂNG KÝ");
+            }
+        });
+    }
+</script>
+<!--main section-->
+<section class="bg-texture hero pt-5">
+    <div class="container">
+        <div class="row d-sm-flex">
+            <div class="col-sm-6 text-white wow fadeIn">
+                <div class="mt-5 pt-5 hidden-sm-down"></div>
+                <h1>Phần mềm CMS Camera giá rẻ nhất</h1>
+                <h2>
+                    Giúp bạn xem Camera trực tiếp trên máy tính
+                </h2>
+                <p class="mt-4 lead">
+                    Có thể xem hàng chục camera 1 lúc, dành cho tất cả các loại camera trên thị trường
+                </p>                
+                <p>
+                    <a href="#" class="mr-2"><img src="~/Content/images/ispy.jpg" class="store-img" style="width:100%;height:100%;" /></a>
+                </p>
+            </div>
+            <div class="col-sm-6 pt-5 hidden-sm-down wow fadeInRight">
+                <video src="~/Content/images/automated.mp4" autoplay="autoplay" poster="video/poster.jpg?v=1"></video>
+            </div>
+        </div>
+    </div>
+</section>
+<!--main features-->
+<section class="bg-alt" id="features">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3 col-sm-8 offset-sm-2 col-xs-12 text-center wow fadeIn">
+                <h2 class="text-primary">Những Tính Năng Cơ Bản của phần mềm Camera</h2>
+                <p class="lead">
+                    Email đến vnnvh80@gmail.com để chúng tôi tư vấn và gửi bạn link download phần mềm
+                </p>
+            </div>
+        </div>
+        <div class="row d-md-flex mt-4 text-center">
+            <div class="col-sm-3 mt-2">
+                <div class="card border-none wow fadeIn">
+                    <div class="card-block">
+                        <img src="~/Content/images/f1.gif" alt="Giám Sát Nhà" title="Giám Sát Nhà" style="float:left" border="0">
+                        <h5 class="card-title text-primary pt-5">Giám Sát Nhà</h5>
+                        <p class="card-text">Bảo vệ ngôi nhà bạn</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 mt-2">
+                <div class="card border-none wow fadeIn">
+                    <div class="card-block">
+                        <img src="~/Content/images/f2.gif" alt="Giám Sát Công Sở" title="Giám Sát Công Sở" style="float:left" border="0">
+                        <h5 class="card-title text-primary pt-5">Giám Sát Công Sở</h5>
+                        <p class="card-text">Giám sát nhà máy, công xưởng</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 mt-2">
+                <div class="card border-none wow fadeIn">
+                    <div class="card-block">
+                        <img src="~/Content/images/f3.jpg" alt="Giám Sát Nhân Viên" title="Giám Sát Nhân Viên" style="float:left" border="0">
+                        <h5 class="card-title text-primary pt-5">Giám Sát Nhân Viên</h5>
+                        <p class="card-text">Cài bản iSpyServer trên máy nhân viên, và chạy ở chế độ ngầm, bạn có thể giám sát công việc ở bất kỳ đâu</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 mt-2">
+                <div class="card border-none wow fadeIn">
+                    <div class="card-block">
+                        <img src="~/Content/images/f4.jpg" alt="Tự động hóa" title="Tự động hóa" style="float:left" border="0">
+                        <h5 class="card-title text-primary pt-5">Tự động hóa</h5>
+                        <p class="card-text">Bạn có thể tự động bật đèn, hay hú còi, bật tiếng chó sủa khi có người đột nhập</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 mt-2">
+                <div class="card border-none wow fadeIn">
+                    <div class="card-block">
+                        <img src="~/Content/images/f5.jpg" alt="Theo dõi người giúp việc" title="Theo dõi người giúp việc" style="float:left" border="0">
+                        <h5 class="card-title text-primary pt-5">Theo dõi người giúp việc</h5>
+                        <p class="card-text">Thu âm cả Micro âm thanh và video khi người giúp việc ở nhà bạn trông trẻ hoặc làm việc riêng</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 mt-2">
+                <div class="card border-none wow fadeIn">
+                    <div class="card-block">
+                        <img src="~/Content/images/f7.jpg" alt="Theo dõi vật nuôi" title="Theo dõi vật nuôi" style="float:left" border="0">
+                        <h5 class="card-title text-primary pt-5">Theo dõi vật nuôi</h5>
+                        <p class="card-text">Theo dõi và giám sát vật nuôi, thú cưng của bạn</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 mt-2">
+                <div class="card border-none wow fadeIn">
+                    <div class="card-block">
+                        <img src="~/Content/images/f8.jpg" alt="Đảm bảo an ninh tổ dân phố" title="Đảm bảo an ninh tổ dân phố" style="float:left" border="0">
+                        <h5 class="card-title text-primary pt-5">Giám sát đường phố, tổ dân</h5>
+                        <p class="card-text">Tăng cười an ninh khu phố bạn</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 mt-2">
+                <div class="card border-none wow fadeIn">
+                    <div class="card-block">
+                        <img src="~/Content/images/f9.jpg" alt="Giám sát văn phòng" title="Theo dõi vật nuôi" style="float:left" border="0">
+                        <h5 class="card-title text-primary pt-5">Giám sát văn phòng</h5>
+                        <p class="card-text">Tăng cười an ninh khu phố bạn</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 mt-2">
+                <div class="card border-none wow fadeIn">
+                    <div class="card-block">
+                        <img src="~/Content/images/f10.jpg" alt="Giám sát máy móc" title="Giám sát máy móc" style="float:left" border="0">
+                        <h5 class="card-title text-primary pt-5">Giám sát máy móc, nhà máy, dây chuyền</h5>
+                        <p class="card-text">Cài đặt phần mềm khi có sự cố sẽ báo về máy điện thoại hoặc email</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 mt-2">
+                <div class="card border-none wow fadeIn">
+                    <div class="card-block">
+                        <img src="~/Content/images/f12.jpg" alt="Camera chống trộm" title="Camera chống trộm" style="float:left" border="0">
+                        <h5 class="card-title text-primary pt-5">Camera chống trộm</h5>
+                        <p class="card-text">Phát hiện đột nhập, thông báo qua sms và email khi có nghi ngờ đột nhập</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 mt-2">
+                <div class="card border-none wow fadeIn">
+                    <div class="card-block">
+                        <img src="~/Content/images/f13.jpg" alt="Giám sát trẻ em" title="Giám sát trẻ em" style="float:left" border="0">
+                        <h5 class="card-title text-primary pt-5">Giám sát trẻ em</h5>
+                        <p class="card-text">Khi con bạn khóc hoặc chuyển động rời khỏi cũi, phát hiện và thông báo qua sms và email, bạn cũng có thể xem trên di động</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--extra features-->
+<section class="bg-inverse text-white" id="extra-features">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3 col-sm-8 offset-sm-2 col-xs-12 text-center wow fadeIn">
+                <h2 class="text-orange">PHẦN MỀM ISPY THÔNG DỤNG CÓ HƠN 2 TRIỆU NGƯỜI SỬ DỤNG</h2>
+                <p class="lead">
+                    DỄ DÀNG CÀI ĐẶT VÀ SỬ DỤNG
+                </p>
+            </div>
+        </div>
+        <div class="row d-md-flex mt-5">
+            <div class="col-sm-4 wow fadeIn">
+                <h5 class="text-orange">Dễ dàng cài đặt</h5>
+                <p>Bạn chỉ việc download và cài đặt</p>
+                <h5 class="text-orange pt-5">Dễ dàng sử dụng</h5>
+                <p>Với hướng dẫn đầy đủ bằng tài liệu và video, hoặc qua điện thoại</p>
+                <h5 class="text-orange pt-5">Thật nhiều tính năng</h5>
+                <p>Cực nhiều tính năng đa dạng về giám sát, cảnh báo, lưu trữ...</p>
+            </div>
+            <div class="col-sm-4 wow fadeIn">
+                <img class="img-fluid mx-auto d-block pb-3" src="~/Content/images/logocmr.png" alt="Đa Chức Năng">
+            </div>
+            <div class="col-sm-4 wow fadeIn">
+                <h5 class="text-orange">Có thể cài đặt thêm tính năng</h5>
+                <p>Thêm các tính năng nhận diện khuôn mặt, quét barcode...</p>
+                <h5 class="text-orange pt-5">Giá rẻ nhất</h5>
+                <p>Với vô vàn tiện ích mang đến cho bạn với giá phải chăng</p>
+                <h5 class="text-orange pt-5">Chất lượng cao</h5>
+                <p>Chạy 24/24 ổn định trên các loại máy tính cấu hình từ trung bình trở lên.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<!--pricing-->
+<section class="bg-alt" id="pricing">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3 col-sm-8 offset-sm-2 col-xs-12 text-center">
+                <h2 class="text-primary">Đăng Ký Mua Phần Mềm giá 150.000 (1 năm sử dụng)</h2>
+                <p class="lead">
+                    Xin chuyển đến: Vietcombank, số tài khoản 0011000661562, chi nhánh Sở Giao Dịch, Chủ tài khoản: Nguyen Viet Huy <br />
+                    Ghi chú khi chuyển khoản với cú pháp sau:<b>Số điện thoại của bạn</b>, ví dụ : <b>0979776427</b><br />
+                    Sau khi chuyển khoản xin email đến địa chỉ vnnvh80@gmail.com với nội dung Số điện thoại của bạn<br />Chúng tôi sẽ gửi link download phần mềm và hướng dẫn sử dụng.
+                </p>
+            </div>
+        </div>
+        <div class="row d-md-flex mt-4 text-center">
+            <div class="col-sm-12 mt-2 wow fadeIn">
+                <div class="card card-outline-primary ">
+                    <div class="card-block" style="min-height:632px;">
+                        <h5 class="card-title pt-4 text-orange">Đăng Ký Mua</h5>
+                        <h3 class="card-title text-primary pt-4">150.000 <sup>vnđ</sup> </h3>
+                        <p class="card-text text-muted pb-3 border-bottom">1 năm sử dụng</p>
+                        <ul class="list-unstyled pricing-list">
+                            <li>- Bộ cài đặt</li>
+                            <li>- Hướng dẫn sử dụng phần mềm</li>
+                            <li>- Hỗ trợ kỹ thuật online và qua điện thoại</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-primary btn-radius" onclick="goi(5);">Đăng Ký</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="bg-orange" id="contact">
+    <div class="container">
+        <div class="row d-md-flex text-center wow fadeIn">
+            <div class="col-md-6 offset-md-3 col-sm-10 offset-sm-1 col-xs-12">
+                <h2 class="text-primary">Đăng Ký Mua Phần Mềm</h2>
+                <p class="mt-4 lead">
+                    <input class="form-control" name="phone" id="phone" placeholder="Nhập số điện thoại" type="text">
+                </p>
+                <p class="mt-5">
+                    <input class="form-control" name="email" id="email" placeholder="Nhập email" type="text">
+                </p>
+                <p class="mt-5">
+                    <input class="form-control" name="name" id="name" placeholder="Nhập Họ tên" type="text">
+                </p>
+                <p class="mt-5">
+                    <select id="goi" name="goi" class="form-control" style="display:none;float:left;position:relative;" multiple>
+                        @*<option selected value="1">Gói 1: Cơ bản</option>
+                            <option value="2">Gói 2: Tiêu chuẩn</option>*@
+                        <option value="3" selected>Chuyên gia cao cấp</option>
+                    </select>
+                    <br /><br /><br />
+                    <a href="#contact" class="btn btn-white btn-radius" id="sendMessageButton2" onclick="muahang();">Đăng Ký</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="bg-alt" id="team">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3 col-sm-8 offset-sm-2 col-xs-12 text-center">
+                <h2 class="text-primary">Các Chuyên Gia</h2>
+                <p class="lead">
+                    Chúng tôi bao gồm các chuyên gia kinh nghiệm ở lĩnh vực công nghệ, marketing và truyền thông
+                </p>
+            </div>
+        </div>
+        <div class="row d-md-flex mt-4 text-center">
+            <div class="col-sm-4 mt-2 wow fadeIn">
+                <div class="card border-none">
+                    <div class="card-block">
+                        <img src="~/Content/new/img/avatar.png" alt="Male" class="img-team img-fluid rounded-circle" />
+                        <h5 class="card-title text-primary pt-4">Nguyễn Viết Huy</h5>
+                        <p class="card-text">CEO - Giám Đốc Điều Hành</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4 mt-2 wow fadeIn">
+                <div class="card border-none">
+                    <div class="card-block">
+                        <img src="~/Content/new/img/thuy.jpg" alt="Male" class="img-team img-fluid rounded-circle" />
+                        <h5 class="card-title text-primary pt-4">Nguyễn Diệu Thùy</h5>
+                        <p class="card-text">Giám đốc Truyền thông</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4 mt-2 wow fadeIn">
+                <div class="card border-none">
+                    <div class="card-block">
+                        <img src="~/Content/new/img/lien.jpg" alt="Male" class="img-team img-fluid rounded-circle" />
+                        <h5 class="card-title text-primary pt-4">Đỗ Hoàng Liên</h5>
+                        <p class="card-text">Giám đốc Marketing</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--contact-->
+<section class="bg-texture-collage p-0" id="contact">
+    <div class="container">
+        <div class="row d-md-flex text-white text-center wow fadeIn">
+            <div class="col-sm-4 p-5">
+                <p><em class="material-icons dp36">phone</em></p>
+                <p class="lead">+0979776427</p>
+            </div>
+            <div class="col-sm-4 p-5">
+                <p><em class="material-icons dp36">email</em></p>
+                <p class="lead">vnnvh80@gmail.com</p>
+            </div>
+            <div class="col-sm-4 p-5">
+                <p><em class="material-icons dp36">location_on</em></p>
+                <p class="lead">Linh Đàm, Hoàng Mai, Hà Nội</p>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="hotline" style="display:block;">
+    <div class="container">
+        <div class="iconcall">
+            <a href="tel:0979776427" class="phonenummber " style="color:blue;">Gọi 097 977 6427</a>
+        </div>
+    </div>
+</div>
